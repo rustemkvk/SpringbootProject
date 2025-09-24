@@ -3,6 +3,10 @@ package com.example.controller_impl;
 import com.example.controller.StudentController;
 import com.example.dto.StudentDTO;
 import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -19,6 +23,7 @@ import java.util.Map;
 public class StudentControllerImpl implements StudentController{
 
     private final StudentServiceImpl studentService;
+    private static final Logger logger = LoggerFactory.getLogger(StudentControllerImpl.class);
 
     public StudentControllerImpl(StudentServiceImpl studentServiceImpl) {
         this.studentService = studentServiceImpl;
@@ -28,7 +33,10 @@ public class StudentControllerImpl implements StudentController{
     @Override
     @PostMapping
     public ResponseEntity<StudentDTO> createStudent(@Valid @RequestBody StudentDTO studentDTO) {
+        logger.debug("New student creation request: {}", studentDTO.getName());
         StudentDTO savedStudent = studentService.saveStudent(studentDTO);
+        logger.debug("New student created successfully. ID={}", savedStudent.getId());
+        //id null
         return ResponseEntity.ok(savedStudent);
     }
 
@@ -73,4 +81,12 @@ public class StudentControllerImpl implements StudentController{
         return ResponseEntity.badRequest().body(errors);
     }
 
+    @GetMapping("/paged")
+    public ResponseEntity<Page<StudentDTO>> getAllStudents(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        PageRequest pageable = PageRequest.of(page, size);
+        Page<StudentDTO> students = studentService.getAllStudents(pageable);
+        return ResponseEntity.ok(students);
+    }
 }

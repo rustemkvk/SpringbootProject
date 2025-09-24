@@ -62,55 +62,6 @@ public class StudentControllerTest {
         verify(studentService, times(1)).saveStudent(any(StudentDTO.class));
     }
 
-//    @Test
-//    //fail
-//    public void testCreateStudent_ValidationFailure() throws Exception {
-//        // Arrange
-//        StudentDTO studentDTO = StudentDTO.builder()
-//                .name("") // Boş isim, validasyon hatası
-//                .surname("Yılmaz")
-//                .department("Kimya")
-//                .email("invalid") // Geçersiz e-posta
-//                .dateOfBirth(LocalDate.of(2026, 1, 1)) // Gelecek tarih
-//                .build();
-//
-//        // Act & Assert
-//        mockMvc.perform(MockMvcRequestBuilders.post("/api/students")
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content(objectMapper.writeValueAsString(studentDTO)))
-//                .andExpect(MockMvcResultMatchers.status().isBadRequest())
-//                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("Name must not be blank"))
-//                .andExpect(MockMvcResultMatchers.jsonPath("$.email").value("Email must be a valid email address"))
-//                .andExpect(MockMvcResultMatchers.jsonPath("$.dateOfBirth").value("Date of birth must be in the past"));
-//
-//        verify(studentService, never()).saveStudent(any(StudentDTO.class));
-//    }
-
-//    @Test
-    //fail
-//    public void testCreateStudent_DuplicateEmail() throws Exception {
-//        // Arrange
-//        StudentDTO studentDTO = StudentDTO.builder()
-//                .name("Ali")
-//                .surname("Yılmaz")
-//                .department("Kimya")
-//                .email("ali_yilmaz@gmail.com")
-//                .dateOfBirth(LocalDate.of(2001, 1, 1))
-//                .build();
-//
-//        when(studentService.saveStudent(any(StudentDTO.class)))
-//                .thenThrow(new org.springframework.dao.DataIntegrityViolationException("Duplicate key value violates unique constraint"));
-//
-//        // Act & Assert
-//        mockMvc.perform(MockMvcRequestBuilders.post("/api/students")
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content(objectMapper.writeValueAsString(studentDTO)))
-//                .andExpect(MockMvcResultMatchers.status().isConflict())
-//                .andExpect(MockMvcResultMatchers.jsonPath("$.error").value("Duplicate email address"));
-//
-//        verify(studentService, times(1)).saveStudent(any(StudentDTO.class));
-//    }
-
     @Test
     //pass
     public void testGetAllStudents_Success() throws Exception {

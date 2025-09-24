@@ -127,10 +127,8 @@ public class StudentSystemTest {
                 .dateOfBirth(LocalDate.of(2000, 1, 1))
                 .build();
 
-        // İlk öğrenci kaydı
         restTemplate.postForEntity(baseUrl, studentDTO, StudentDTO.class);
 
-        // Aynı e-posta ile ikinci kayıt
         StudentDTO studentDTO2 = StudentDTO.builder()
                 .name("Alim")
                 .surname("Yılmaz")
@@ -266,6 +264,24 @@ public class StudentSystemTest {
 
         List<StudentDTO> students = restTemplate.getForEntity(baseUrl, List.class).getBody();
         assertThat(students).isEmpty();
+    }
+
+    @Test
+    public void getStudentPagination_Success() {
+        for (int i = 1; i <= 15; i++) {
+            StudentDTO studentDTO = StudentDTO.builder()
+                    .name("Student" + i)
+                    .surname("Surname" + i)
+                    .department("Department" + i)
+                    .email("student" + i + "@example.com")
+                    .dateOfBirth(LocalDate.of(2000, 1, 1))
+                    .build();
+            restTemplate.postForEntity(baseUrl, studentDTO, StudentDTO.class);
+        }
+
+        String url = baseUrl + "?page=0&size=10";
+        ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 }
 

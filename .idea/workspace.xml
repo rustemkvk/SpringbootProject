@@ -4,15 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b477b72-ebb7-4b0a-bd71-f786d0e41a58" name="Changes" comment="">
+    <list default="true" id="9b477b72-ebb7-4b0a-bd71-f786d0e41a58" name="Changes" comment="Project student - Cucumber Tests">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/cucumber/stepdef/StudentStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/cucumber/stepdef/StudentStepDefinition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/features/student.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/features/student.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/SpringFullProjectApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/SpringFullProjectApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/StudentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/StudentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller_impl/StudentControllerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller_impl/StudentControllerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/dto/StudentDTO$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/dto/StudentDTO$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/dto/StudentDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/dto/StudentDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/entity/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/entity/Student.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/repositories/StudentRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/repositories/StudentRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/services/StudentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/services/StudentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/services/StudentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/services/StudentServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/application-test.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/application-test.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/system/StudentSystemTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/example/system/StudentSystemTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -27,64 +50,104 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Main.executor": "Debug",
+    "Cucumber Java.Scenario: Create a student successfully.executor": "Run",
+    "Cucumber Java.Scenario: Deneme senaryo.executor": "Run",
+    "Cucumber Java.Scenario: Get a student with id.executor": "Run",
+    "Cucumber Java.Scenario: Record a student successfully.executor": "Run",
+    "JUnit.CukesRunner.executor": "Debug",
     "JUnit.StudentSystemTest.testCreateStudent_DuplicateEmail.executor": "Run",
     "JUnit.StudentSystemTest.testCreateStudent_Success.executor": "Run",
     "JUnit.StudentSystemTest.testCreateStudent_ValidationFailure.executor": "Run",
     "JUnit.StudentSystemTest.testDeleteStudent_Success.executor": "Run",
     "JUnit.StudentSystemTest.testGetAllStudents_Empty.executor": "Run",
-    "JUnit.StudentSystemTest.testGetStudentById_NotFound.executor": "Debug",
-    "JUnit.StudentSystemTest.testGetStudentById_Success.executor": "Debug",
-    "JUnit.StudentSystemTest.testUpdateStudent_Success.executor": "Debug",
+    "JUnit.StudentSystemTest.testGetStudentById_NotFound.executor": "Run",
+    "JUnit.StudentSystemTest.testGetStudentById_Success.executor": "Run",
+    "JUnit.StudentSystemTest.testUpdateStudent_Success.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main"
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.StudentSystemTest.testDeleteStudent_Success">
-    <configuration name="StudentSystemTest.testCreateStudent_DuplicateEmail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Cucumber Java.Scenario: Record a student successfully">
+    <configuration name="Scenario: Create a student successfully" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/student.feature" />
+      <option name="GLUE" value="com.example.cucumber.stepdefinitions com.example.cucumber.config" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="spring_full_project" />
+      <option name="NAME_FILTER" value="^Create a student successfully$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Create a student successfully$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Create a student successfully" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.system.*" />
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.system" />
-      <option name="MAIN_CLASS_NAME" value="com.example.system.StudentSystemTest" />
-      <option name="METHOD_NAME" value="testCreateStudent_DuplicateEmail" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StudentSystemTest.testDeleteStudent_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: Deneme senaryo" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/student.feature" />
+      <option name="GLUE" value="com.example.cucumber.stepdef com.example.cucumber.config" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="spring_full_project" />
+      <option name="NAME_FILTER" value="^Deneme senaryo$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Deneme senaryo$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Deneme senaryo" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.system.*" />
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.system" />
-      <option name="MAIN_CLASS_NAME" value="com.example.system.StudentSystemTest" />
-      <option name="METHOD_NAME" value="testDeleteStudent_Success" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StudentSystemTest.testGetStudentById_NotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: Get a student with id" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/student.feature" />
+      <option name="GLUE" value="com.example.cucumber.stepdef com.example.cucumber.config" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="spring_full_project" />
+      <option name="NAME_FILTER" value="^Get a student with id$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Get a student with id$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Get a student with id" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.system.*" />
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.system" />
-      <option name="MAIN_CLASS_NAME" value="com.example.system.StudentSystemTest" />
-      <option name="METHOD_NAME" value="testGetStudentById_NotFound" />
-      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: Record a student successfully" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/student.feature" />
+      <option name="GLUE" value="com.example.cucumber.stepdef com.example.cucumber.config" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="spring_full_project" />
+      <option name="NAME_FILTER" value="^Record a student successfully$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Record a student successfully$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Record a student successfully" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -105,29 +168,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StudentSystemTest.testUpdateStudent_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="spring_full_project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.system.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.system" />
-      <option name="MAIN_CLASS_NAME" value="com.example.system.StudentSystemTest" />
-      <option name="METHOD_NAME" value="testUpdateStudent_Success" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.StudentSystemTest.testDeleteStudent_Success" />
-        <item itemvalue="JUnit.StudentSystemTest.testUpdateStudent_Success" />
-        <item itemvalue="JUnit.StudentSystemTest.testGetStudentById_NotFound" />
+        <item itemvalue="Cucumber Java.Scenario: Record a student successfully" />
+        <item itemvalue="Cucumber Java.Scenario: Create a student successfully" />
+        <item itemvalue="Cucumber Java.Scenario: Deneme senaryo" />
+        <item itemvalue="Cucumber Java.Scenario: Get a student with id" />
         <item itemvalue="JUnit.StudentSystemTest.testGetStudentById_Success" />
-        <item itemvalue="JUnit.StudentSystemTest.testCreateStudent_DuplicateEmail" />
       </list>
     </recent_temporary>
   </component>
@@ -139,29 +186,90 @@
       <option name="presentableId" value="Default" />
       <updated>1758121002576</updated>
     </task>
+    <task id="LOCAL-00001" summary="Project student">
+      <option name="closed" value="true" />
+      <created>1758146217678</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1758146217678</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Project student">
+      <option name="closed" value="true" />
+      <created>1758146279119</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1758146279119</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Project student">
+      <option name="closed" value="true" />
+      <created>1758747738857</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1758747738857</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Project student - Cucumber Tests">
+      <option name="closed" value="true" />
+      <created>1758751694455</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1758751694455</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Project student" />
+    <MESSAGE value="Project student - Cucumber Tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Project student - Cucumber Tests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java</url>
-          <line>157</line>
+          <line>173</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java</url>
-          <line>174</line>
+          <line>190</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java</url>
-          <line>199</line>
+          <line>216</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java</url>
-          <line>202</line>
+          <line>219</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -176,28 +284,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java</url>
-          <line>197</line>
+          <line>214</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java</url>
-          <line>216</line>
+          <line>233</line>
           <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java</url>
-          <line>86</line>
-          <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java</url>
           <line>84</line>
           <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java</url>
-          <line>85</line>
-          <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java</url>
@@ -211,43 +309,123 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java</url>
-          <line>151</line>
+          <line>167</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java</url>
-          <line>150</line>
+          <line>166</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java</url>
-          <line>148</line>
+          <line>164</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java</url>
-          <line>145</line>
+          <line>161</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java</url>
-          <line>169</line>
+          <line>185</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java</url>
-          <line>175</line>
+          <line>191</line>
           <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java</url>
-          <line>190</line>
+          <line>207</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java</url>
-          <line>220</line>
+          <line>238</line>
           <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java</url>
+          <line>255</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java</url>
+          <line>264</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java</url>
+          <line>111</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java</url>
+          <line>114</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java</url>
+          <line>115</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java</url>
+          <line>116</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java</url>
+          <line>101</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java</url>
+          <line>98</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java</url>
+          <line>97</line>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java</url>
+          <line>92</line>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/example/system/StudentSystemTest.java</url>
+          <line>96</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/example/cucumber/stepdef/StudentStepDefinition.java</url>
+          <line>59</line>
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/Main.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="83" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/Main.java</url>
+          <line>65</line>
+          <option name="timeStamp" value="84" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/example/cucumber/stepdef/StudentStepDefinition.java</url>
+          <line>83</line>
+          <option name="timeStamp" value="85" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/example/cucumber/stepdef/StudentStepDefinition.java</url>
+          <line>82</line>
+          <option name="timeStamp" value="86" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

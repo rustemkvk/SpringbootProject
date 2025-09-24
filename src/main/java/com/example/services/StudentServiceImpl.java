@@ -4,6 +4,10 @@ package com.example.services;
 import com.example.dto.StudentDTO;
 import com.example.entity.Student;
 import com.example.repositories.StudentRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
@@ -15,7 +19,7 @@ import java.util.stream.Collectors;
 public class StudentServiceImpl implements StudentService {
 
     private final StudentRepository studentRepository;
-
+    private static final Logger logger = LoggerFactory.getLogger(StudentServiceImpl.class);
     public StudentServiceImpl(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
@@ -32,7 +36,7 @@ public class StudentServiceImpl implements StudentService {
 
     private Student convertToEntity(StudentDTO dto) {
         Student student = new Student();
-        student.setName(dto.getName());
+        student.setName(String.valueOf(dto.getName()));
         student.setSurname(dto.getSurname());
         student.setDepartment(dto.getDepartment());
         student.setEmail(dto.getEmail());
@@ -67,7 +71,7 @@ public class StudentServiceImpl implements StudentService {
     public StudentDTO updateStudent(Long id, StudentDTO studentDTO) {
         return studentRepository.findById(id)
                 .map(existingStudent -> {
-                    existingStudent.setName(studentDTO.getName());
+                    existingStudent.setName(String.valueOf(studentDTO.getName()));
                     existingStudent.setSurname(studentDTO.getSurname());
                     existingStudent.setDepartment(studentDTO.getDepartment());
                     existingStudent.setEmail(studentDTO.getEmail());
@@ -85,5 +89,11 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Optional<StudentDTO> findByEmail(String email) {
         return studentRepository.findByEmail(email).map(this::convertToDTO);
+    }
+
+    @Override
+    public Page<StudentDTO> getAllStudents(Pageable pageable) {
+        return studentRepository.findAll(pageable)
+                .map(this::convertToDTO);
     }
 }

@@ -1,6 +1,7 @@
 package com.example.dto;
 
 import java.time.LocalDate;
+
 import jakarta.validation.constraints.*;
 
 public class StudentDTO {
@@ -20,7 +21,7 @@ public class StudentDTO {
     private  String department;
 
     @NotBlank(message = "Email cannot be blank")
-    @Size(min = 1, max = 255, message = "Department must be between 1 and 255 characters")
+    @Size(min = 1, max = 255, message = "Email must be between 1 and 255 characters")
     @Email(message = "Email should be valid, e.g. example@gmail.com")
     private  String email;
 
@@ -31,7 +32,7 @@ public class StudentDTO {
     public StudentDTO() {
     }
 
-    // Private constructor for Builder, gets a Builder object
+
     private StudentDTO(Builder builder) {
         this.id = null;
         this.name = builder.name;
@@ -74,7 +75,6 @@ public class StudentDTO {
         return dateOfBirth;
     }
 
-    // Builder class
     public static class Builder {
         private String name;
         private String surname;
@@ -112,7 +112,7 @@ public class StudentDTO {
         }
     }
 
-    // Static builder method
+
     public static Builder builder() {
         return new Builder();
     }

@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.dto.StudentDTO;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
@@ -16,4 +17,6 @@ public interface StudentController {
     ResponseEntity<Void> deleteStudent(Long id);
 
     ResponseEntity<StudentDTO> updateStudent(Long id, StudentDTO student);
+
+    ResponseEntity<Page<StudentDTO>> getAllStudents(int page, int size);
 }
