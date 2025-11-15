@@ -14,9 +14,9 @@ public interface StudentController {
 
     ResponseEntity<StudentDTO> getStudentById(Long id);
 
-    ResponseEntity<Void> deleteStudent(Long id);
-
     ResponseEntity<StudentDTO> updateStudent(Long id, StudentDTO student);
+
+    ResponseEntity<Void> deleteStudent(Long id);
 
     ResponseEntity<Page<StudentDTO>> getAllStudents(int page, int size);
 }

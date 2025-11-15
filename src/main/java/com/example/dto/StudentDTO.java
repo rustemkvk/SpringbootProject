@@ -21,7 +21,7 @@ public class StudentDTO {
     private  String department;
 
     @NotBlank(message = "Email cannot be blank")
-    @Size(min = 1, max = 255, message = "Email must be between 1 and 255 characters")
+    @Size(min = 12, max = 255, message = "Email must be between 1 and 255 characters")
     @Email(message = "Email should be valid, e.g. example@gmail.com")
     private  String email;
 

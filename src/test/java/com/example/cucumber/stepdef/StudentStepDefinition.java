@@ -25,15 +25,13 @@ public class StudentStepDefinition {
     private StudentDTO studentDTO;
     private ResponseEntity<StudentDTO> response;
     private Optional<Student> savedStudent;
-    //   @Autowired
-    private final StudentControllerImpl studentController;
-    //   @Autowired
+    private final StudentControllerImpl studentControllerImpl;
     private final StudentRepository studentRepository;
 
 
-    public StudentStepDefinition(StudentControllerImpl studentController, StudentRepository studentRepository) {
+    public StudentStepDefinition(StudentControllerImpl studentControllerImpl, StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
-        this.studentController = studentController;
+        this.studentControllerImpl = studentControllerImpl;
     }
 
     @Given("a student recorded with name {string}, surname {string}, department {string}, email {string}, and dateOfBirth {string}")
@@ -50,7 +48,7 @@ public class StudentStepDefinition {
 
     @When("the request sent")
     public void iSendAPOSTRequestTo() {
-        response = studentController.createStudent(studentDTO);
+        response = studentControllerImpl.createStudent(studentDTO);
     }
 
     @And("the response should contain name {string}, surname {string}, email {string}")
@@ -67,12 +65,12 @@ public class StudentStepDefinition {
         Long id = savedStudent.get().getId();
         assertThat(id).isNotNull();
 
-        ResponseEntity<List<StudentDTO>> getResponse = studentController.getAllStudents();
+        ResponseEntity<List<StudentDTO>> getResponse = studentControllerImpl.getAllStudents();
         assertThat(getResponse.getBody()).hasSize(1);
     }
 
-    @When("the student searched by id")
-    public void theStudentSearchedById() {
+    @When("the student is searched by id")
+    public void theStudentIsSearchedById() {
         savedStudent = studentRepository.findByEmail(studentDTO.getEmail());
 
     }

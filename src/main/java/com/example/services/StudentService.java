@@ -8,17 +8,18 @@ import java.util.List;
 import java.util.Optional;
 
 public interface StudentService {
+
     StudentDTO saveStudent(StudentDTO studentDTO);
 
     List<StudentDTO> getAllStudents();
-
-    Page<StudentDTO> getAllStudents(Pageable pageable);
 
     Optional<StudentDTO> getStudentById(Long id);
 
     StudentDTO updateStudent(Long id, StudentDTO studentDTO);
 
     void deleteStudent(Long id);
+
+    Page<StudentDTO> getAllStudents(Pageable pageable);
 
     Optional<StudentDTO> findByEmail(String email);
 }

@@ -13,7 +13,7 @@ Feature: Student API tests
   Scenario Outline: Get a student with id
     Given a student recorded with name "<name>", surname "<surname>", department "<department>", email "<email>", and dateOfBirth "<dob>"
     When the request sent
-    When the student searched by id
+    When the student is searched by id
     Then the id is not null
     And the response status should be OK
     And the student is in records

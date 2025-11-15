@@ -43,7 +43,7 @@ public class StudentSystemTest {
     private StudentRepository studentRepository;
 
     @Autowired
-    private StudentControllerImpl studentController;
+    private StudentControllerImpl studentControllerImpl;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -78,7 +78,7 @@ public class StudentSystemTest {
                 .dateOfBirth(LocalDate.of(2000, 1, 1))
                 .build();
 
-        ResponseEntity<StudentDTO> response = studentController.createStudent(studentDTO);
+        ResponseEntity<StudentDTO> response = studentControllerImpl.createStudent(studentDTO);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody().getName()).isEqualTo("Ali");
         assertThat(response.getBody().getEmail()).isEqualTo("ali.yilmaz@example.com");
@@ -89,7 +89,7 @@ public class StudentSystemTest {
         assertThat(id).isNotNull();
 
         assertThat(id).isNotNull();
-        ResponseEntity<List<StudentDTO>> getResponse = studentController.getAllStudents();
+        ResponseEntity<List<StudentDTO>> getResponse = studentControllerImpl.getAllStudents();
         assertThat(getResponse.getBody()).hasSize(1);
     }
 
@@ -167,7 +167,7 @@ public class StudentSystemTest {
                 .dateOfBirth(LocalDate.of(2000, 1, 1))
                 .build();
 
-        ResponseEntity<StudentDTO> postResponse = studentController.createStudent(studentDTO);
+        ResponseEntity<StudentDTO> postResponse = studentControllerImpl.createStudent(studentDTO);
     //    ResponseEntity<StudentDTO> postResponse = restTemplate.postForEntity(baseUrl, studentDTO, StudentDTO.class);
 
         Optional<Student> savedStudent = studentRepository.findByEmail("ali.yilmaz@example.com");
@@ -175,7 +175,7 @@ public class StudentSystemTest {
         Long id = savedStudent.get().getId();
         assertThat(id).isNotNull();
 
-        ResponseEntity<StudentDTO> getResponse = studentController.getStudentById(id);
+        ResponseEntity<StudentDTO> getResponse = studentControllerImpl.getStudentById(id);
         assertThat(getResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(getResponse.getBody().getName()).isEqualTo("Alis");
         assertThat(getResponse.getBody().getEmail()).isEqualTo("ali.yilmaz@example.com");
@@ -192,14 +192,14 @@ public class StudentSystemTest {
                 .dateOfBirth(LocalDate.of(2000, 1, 1))
                 .build();
 
-        ResponseEntity<StudentDTO> postResponse = studentController.createStudent(studentDTO);
+        ResponseEntity<StudentDTO> postResponse = studentControllerImpl.createStudent(studentDTO);
 
         Optional<Student> savedStudent = studentRepository.findByEmail("ali.yilmaz@example.com");
         assertThat(savedStudent).isPresent();
         Long id = savedStudent.get().getId();
         assertThat(id).isNotNull();
 
-        ResponseEntity<StudentDTO> response = studentController.getStudentById(2L);
+        ResponseEntity<StudentDTO> response = studentControllerImpl.getStudentById(2L);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
     }
 
@@ -214,7 +214,7 @@ public class StudentSystemTest {
                 .build();
 
 
-        ResponseEntity<StudentDTO> postResponse = studentController.createStudent(studentDTO);
+        ResponseEntity<StudentDTO> postResponse = studentControllerImpl.createStudent(studentDTO);
     //    ResponseEntity<StudentDTO> postResponse = restTemplate.postForEntity(baseUrl, studentDTO, StudentDTO.class);
         assertThat(postResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
 
@@ -232,7 +232,7 @@ public class StudentSystemTest {
                 .dateOfBirth(LocalDate.of(2000, 1, 1))
                 .build();
 
-        ResponseEntity<StudentDTO> putResponse = studentController.updateStudent(id, updatedStudentDTO);
+        ResponseEntity<StudentDTO> putResponse = studentControllerImpl.updateStudent(id, updatedStudentDTO);
 
 //        ResponseEntity<StudentDTO> putResponse = restTemplate.exchange(
 //                baseUrl + "/" + id,
@@ -245,7 +245,7 @@ public class StudentSystemTest {
         assertThat(putResponse.getBody().getName()).isEqualTo("Ali");
         assertThat(putResponse.getBody().getEmail()).isEqualTo("ali.gunay@example.com");
 
-        ResponseEntity<StudentDTO> getResponse = studentController.getStudentById(id);
+        ResponseEntity<StudentDTO> getResponse = studentControllerImpl.getStudentById(id);
     //    ResponseEntity<StudentDTO> getResponse = restTemplate.getForEntity(baseUrl + "/" + id, StudentDTO.class);
         assertThat(getResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(getResponse.getBody().getName()).isEqualTo("Ali");
