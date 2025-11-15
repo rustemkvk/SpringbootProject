@@ -3,7 +3,7 @@ Feature: Student API tests
   Scenario Outline: Record a student successfully
     Given a student recorded with name "<name>", surname "<surname>", department "<department>", email "<email>", and dateOfBirth "<dob>"
     When the request sent
-    Then the response status should be OK
+    Then the response status should be CREATED
     And the response should contain name "<name>", surname "<surname>", email "<email>"
     And the id is not null
     Examples:
@@ -15,7 +15,7 @@ Feature: Student API tests
     When the request sent
     When the student is searched by id
     Then the id is not null
-    And the response status should be OK
+    And the response status should be CREATED
     And the student is in records
     Examples:
       | name  | surname | department       | email                   | dob        |

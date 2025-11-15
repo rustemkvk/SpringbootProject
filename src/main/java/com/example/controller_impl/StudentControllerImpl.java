@@ -37,7 +37,7 @@ public class StudentControllerImpl implements StudentController{
         StudentDTO savedStudent = studentService.saveStudent(studentDTO);
         logger.debug("New student created successfully. ID={}", savedStudent.getId());
         //id null
-        return ResponseEntity.ok(savedStudent);
+        return ResponseEntity.created(null).body(savedStudent);
     }
 
     @Override
