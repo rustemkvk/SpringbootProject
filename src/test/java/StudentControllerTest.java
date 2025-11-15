@@ -4,6 +4,7 @@ import com.example.dto.StudentDTO;
 
 import com.example.services.StudentServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -14,7 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -35,79 +36,77 @@ public class StudentControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
+    Faker faker = new Faker();
+
+    private StudentDTO buildStudentDTO() {
+        return StudentDTO.builder()
+                .name(faker.name().firstName())
+                .surname(faker.name().lastName())
+                .department(faker.options().option(
+                        "Chemistry",
+                        "Physics",
+                        "Mathematics",
+                        "Software Engineering"
+                ))
+                .email(faker.internet().emailAddress())
+                .dateOfBirth(
+                        faker.date()
+                                .birthday(18, 30)
+                                .toInstant()
+                                .atZone(ZoneId.systemDefault())
+                                .toLocalDate()
+                )
+                .build();
+    }
+
     @Test
     public void testCreateStudent_Success() throws Exception {
         // Arrange
-        StudentDTO studentDTO = StudentDTO.builder()
-                .name("Ali")
-                .surname("Yılmaz")
-                .department("Kimya")
-                .email("ali_yilmaz@gmail.com")
-                .dateOfBirth(LocalDate.of(2001, 1, 1))
-                .build();
+        StudentDTO studentDTO = buildStudentDTO();
 
-        when(studentService.saveStudent(any(StudentDTO.class))).thenReturn(studentDTO);
+        when(studentService.saveStudent(any(StudentDTO.class)))
+                .thenReturn(studentDTO);
 
         // Act & Assert
         mockMvc.perform(MockMvcRequestBuilders.post("/api/students")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(studentDTO)))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("Ali"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.surname").value("Yılmaz"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.department").value("Kimya"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.email").value("ali_yilmaz@gmail.com"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.dateOfBirth").value("2001-01-01"));
+                .andExpect(MockMvcResultMatchers.status().isCreated())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(studentDTO.getName()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.surname").value(studentDTO.getSurname()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.department").value(studentDTO.getDepartment()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.email").value(studentDTO.getEmail()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.dateOfBirth").value(studentDTO.getDateOfBirth().toString()));
 
-        verify(studentService, times(1)).saveStudent(any(StudentDTO.class));
+        verify(studentService, times(1))
+                .saveStudent(any(StudentDTO.class));
     }
 
     @Test
-    //pass
     public void testGetAllStudents_Success() throws Exception {
         // Arrange
-        StudentDTO student1 = StudentDTO.builder()
-                .name("Ali")
-                .surname("Yılmaz")
-                .department("Kimya")
-                .email("ali_yilmaz@gmail.com")
-                .dateOfBirth(LocalDate.of(2001, 1, 1))
-                .build();
-
-        StudentDTO student2 = StudentDTO.builder()
-                .name("Veli")
-                .surname("Demir")
-                .department("Yazılım Mühendisliği")
-                .email("veli.demir@example.com")
-                .dateOfBirth(LocalDate.of(1999, 1, 1))
-                .build();
-
+        StudentDTO student1 = buildStudentDTO();
+        StudentDTO student2 = buildStudentDTO();
         List<StudentDTO> students = Arrays.asList(student1, student2);
-        when(studentService.getAllStudents()).thenReturn(students);
+        when(studentService.getAllStudents())
+                .thenReturn(students);
 
         // Act & Assert
         mockMvc.perform(MockMvcRequestBuilders.get("/api/students")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].name").value("Ali"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].surname").value("Yılmaz"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[1].name").value("Veli"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[1].surname").value("Demir"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].name").value(student1.getName()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].surname").value(student1.getSurname()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[1].name").value(student2.getName()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[1].surname").value(student2.getSurname()));
 
         verify(studentService, times(1)).getAllStudents();
     }
 
     @Test
-    //pass
     public void testGetStudentById_Success() throws Exception {
         // Arrange
-        StudentDTO studentDTO = StudentDTO.builder()
-                .name("Ali")
-                .surname("Yılmaz")
-                .department("Kimya")
-                .email("ali_yilmaz@gmail.com")
-                .dateOfBirth(LocalDate.of(2001, 1, 1))
-                .build();
+        StudentDTO studentDTO = buildStudentDTO();
 
         when(studentService.getStudentById(1L)).thenReturn(Optional.of(studentDTO));
 
@@ -115,15 +114,14 @@ public class StudentControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/students/1")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("Ali"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.surname").value("Yılmaz"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.email").value("ali_yilmaz@gmail.com"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(studentDTO.getName()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.surname").value(studentDTO.getSurname()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.email").value(studentDTO.getEmail()));
 
         verify(studentService, times(1)).getStudentById(1L);
     }
 
     @Test
-    //pass
     public void testGetStudentById_NotFound() throws Exception {
         // Arrange
         when(studentService.getStudentById(1L)).thenReturn(Optional.empty());
@@ -139,13 +137,7 @@ public class StudentControllerTest {
     @Test
     public void testUpdateStudent_Success() throws Exception {
         // Arrange
-        StudentDTO updatedStudentDTO = StudentDTO.builder()
-                .name("Ali Günay")
-                .surname("Günay")
-                .department("Yazılım Mühendisliği")
-                .email("ali.gunay@example.com")
-                .dateOfBirth(LocalDate.of(2001, 1, 1))
-                .build();
+        StudentDTO updatedStudentDTO = buildStudentDTO();
 
         when(studentService.updateStudent(eq(1L), any(StudentDTO.class))).thenReturn(updatedStudentDTO);
 
@@ -154,9 +146,9 @@ public class StudentControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(updatedStudentDTO)))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("Ali Günay"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.surname").value("Günay"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.email").value("ali.gunay@example.com"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(updatedStudentDTO.getName()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.surname").value(updatedStudentDTO.getSurname()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.email").value(updatedStudentDTO.getEmail()));
 
         verify(studentService, times(1)).updateStudent(eq(1L), any(StudentDTO.class));
     }
@@ -164,13 +156,7 @@ public class StudentControllerTest {
     @Test
     public void testUpdateStudent_NotFound() throws Exception {
         // Arrange
-        StudentDTO studentDTO = StudentDTO.builder()
-                .name("Ali Günay")
-                .surname("Günay")
-                .department("Yazılım Mühendisliği")
-                .email("ali.gunay@example.com")
-                .dateOfBirth(LocalDate.of(2001, 1, 1))
-                .build();
+        StudentDTO studentDTO = buildStudentDTO();
 
         when(studentService.updateStudent(eq(1L), any(StudentDTO.class)))
                 .thenThrow(new RuntimeException("Student not found with id: 1"));
@@ -185,7 +171,6 @@ public class StudentControllerTest {
     }
 
     @Test
-    //pass
     public void testDeleteStudent_Success() throws Exception {
         // Arrange
         doNothing().when(studentService).deleteStudent(1L);

@@ -74,6 +74,10 @@ public class StudentDTO {
         return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
@@ -120,7 +124,6 @@ public class StudentDTO {
             return new StudentDTO(this);
         }
     }
-
 
     public static Builder builder() {
         return new Builder();

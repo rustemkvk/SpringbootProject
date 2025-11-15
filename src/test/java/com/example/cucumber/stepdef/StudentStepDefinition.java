@@ -76,9 +76,9 @@ public class StudentStepDefinition {
         assertThat(savedStudent).isPresent();
     }
 
-    @And("the response status should be OK")
-    public void theResponseStatusShouldBeOK() {
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+    @And("the response status should be CREATED")
+    public void theResponseStatusShouldBeCreated() {
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
     }
 
 }

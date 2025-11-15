@@ -108,6 +108,14 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Source: https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>1.0.2</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -132,32 +140,32 @@
             </plugin>
 
             <!-- Cucumber Reporting (runs with JAR) -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.3.0</version>
-                <executions>
-                    <execution>
-                        <id>generate-cucumber-report</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <mainClass>net.masterthought.cucumber.ReportBuilder</mainClass>
-                    <classpathScope>test</classpathScope>
-                    <arguments>
-                        <argument>--input</argument>
-                        <argument>${project.build.directory}/cucumber.json</argument>
-                        <argument>--output</argument>
-                        <argument>${project.build.directory}/cucumber-reports</argument>
-                        <argument>--project</argument>
-                        <argument>Student API</argument>
-                    </arguments>
-                </configuration>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.codehaus.mojo</groupId>-->
+<!--                <artifactId>exec-maven-plugin</artifactId>-->
+<!--                <version>3.3.0</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>generate-cucumber-report</id>-->
+<!--                        <phase>verify</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>java</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--                <configuration>-->
+<!--                    <mainClass>net.masterthought.cucumber.ReportBuilder</mainClass>-->
+<!--                    <classpathScope>test</classpathScope>-->
+<!--                    <arguments>-->
+<!--                        <argument>&#45;&#45;input</argument>-->
+<!--                        <argument>${project.build.directory}/cucumber.json</argument>-->
+<!--                        <argument>&#45;&#45;output</argument>-->
+<!--                        <argument>${project.build.directory}/cucumber-reports</argument>-->
+<!--                        <argument>&#45;&#45;project</argument>-->
+<!--                        <argument>Student API</argument>-->
+<!--                    </arguments>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 </project>
