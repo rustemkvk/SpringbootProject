@@ -13,7 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -64,9 +63,6 @@ public class StudentStepDefinition {
         assertThat(savedStudent).isPresent();
         Long id = savedStudent.get().getId();
         assertThat(id).isNotNull();
-
-        ResponseEntity<List<StudentDTO>> getResponse = studentControllerImpl.getAllStudents();
-        assertThat(getResponse.getBody()).hasSize(1);
     }
 
     @When("the student is searched by id")

@@ -1,13 +1,13 @@
 # Project – Java Spring Boot REST API
 
 ## Overview
-This project is a Java + Spring Boot REST application built with Maven and backed by a PostgreSQL database.
+This project is a Java + Spring Boot + REST application built with Maven and backend by a PostgreSQL database.
 Docker Compose is the recommended way to run the application locally.
 
 ---
 
 ## Technology Stack
-- Java 17+
+- Java 21
 - Spring Boot
 - Maven
 - PostgreSQL
@@ -24,10 +24,10 @@ Docker Compose is the recommended way to run the application locally.
 ├── src
 │   ├── main
 │   │   ├── java        # Application source code
-│   │   └── resources   # Configuration files (application.yml / properties)
+│   │   └── resources   # Configuration files (application.yml / application.properties)
 │   └── test
-│       └── java        # Unit and integration and endtoend tests
-│       └── resources   # End-to-end test and configurations
+│       └── java        # Unit and Integration and EndtoEnd tests
+│       └── resources   # Cucumber feature file and test configurations
 
 ```
 
@@ -50,7 +50,7 @@ Environment variables are defined in `docker-compose.yml`.
 - `SPRING_DATASOURCE_USERNAME` – Database username  
   `postgres`
 - `SPRING_DATASOURCE_PASSWORD` – Database password  
-   `password`
+  `password`
 
 Additional JPA / Hibernate settings are also configured via environment variables.
 
@@ -62,7 +62,7 @@ Additional JPA / Hibernate settings are also configured via environment variable
 From the project root directory:
 
 ```bash
-docker compose up --build
+docker compose up -d --build
 ```
 
 This will:
@@ -82,7 +82,7 @@ localhost:5433  (container port: 5432)
 
 #### Run in Detached Mode
 ```bash
-docker compose up --build -d
+docker compose up -d --build
 ```
 
 ---
@@ -118,7 +118,7 @@ mvn spring-boot:run
 
 Run unit tests:
 ```bash
-mvn test
+mvn clean install
 ```
 
 ---
@@ -135,7 +135,7 @@ mvn test
 ## Important Notes
 
 - `depends_on` in `docker-compose.yml` ensures container start order but does **not** guarantee that the database is ready to accept connections.
-  Consider adding retry logic, a healthcheck, or a wait-for mechanism if required.
+  Consider adding retry logic, a health check, or a wait-for mechanism if required.
 - Log levels can be controlled via environment variables in `docker-compose.yml`, for example:
   - `LOGGING_LEVEL_ORG_SPRINGFRAMEWORK`
   - `LOGGING_LEVEL_COM_EXAMPLE`

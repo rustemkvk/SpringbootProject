@@ -21,7 +21,6 @@ public class StudentDTO {
     private  String department;
 
     @NotBlank(message = "Email cannot be blank")
-    @Size(min = 12, max = 255, message = "Email must be between 1 and 255 characters")
     @Email(message = "Email should be valid, e.g. example@gmail.com")
     private  String email;
 
@@ -34,7 +33,7 @@ public class StudentDTO {
 
 
     private StudentDTO(Builder builder) {
-        this.id = null;
+        this.id = builder.id;
         this.name = builder.name;
         this.surname = builder.surname;
         this.department = builder.department;
@@ -53,6 +52,10 @@ public class StudentDTO {
 
     public Long getId(){
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -76,11 +79,17 @@ public class StudentDTO {
     }
 
     public static class Builder {
+        private Long id;
         private String name;
         private String surname;
         private String department;
         private String email;
         private LocalDate dateOfBirth;
+
+        public Builder id(Long id) {
+            this.id = id;
+            return this;
+        }
 
         public Builder name(String name) {
             this.name = name;
@@ -116,7 +125,5 @@ public class StudentDTO {
     public static Builder builder() {
         return new Builder();
     }
-
-
 
 }

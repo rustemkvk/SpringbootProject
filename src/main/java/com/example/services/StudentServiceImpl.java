@@ -26,6 +26,7 @@ public class StudentServiceImpl implements StudentService {
 
     private StudentDTO convertToDTO(Student student) {
         return StudentDTO.builder()
+                .id(student.getId())
                 .name(student.getName())
                 .surname(student.getSurname())
                 .department(student.getDepartment())
@@ -71,7 +72,7 @@ public class StudentServiceImpl implements StudentService {
     public StudentDTO updateStudent(Long id, StudentDTO studentDTO) {
         return studentRepository.findById(id)
                 .map(existingStudent -> {
-                    existingStudent.setName(String.valueOf(studentDTO.getName()));
+                    existingStudent.setName((studentDTO.getName()));
                     existingStudent.setSurname(studentDTO.getSurname());
                     existingStudent.setDepartment(studentDTO.getDepartment());
                     existingStudent.setEmail(studentDTO.getEmail());

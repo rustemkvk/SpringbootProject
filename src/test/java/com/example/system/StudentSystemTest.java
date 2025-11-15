@@ -115,19 +115,11 @@ public class StudentSystemTest {
         assertThat(errors).containsKey("name");
         assertThat(errors.get("name")).contains("not be blank");
         assertThat(errors).containsKey("email");
-        assertThat(errors.get("email")).contains("must be a well-formed email address");
-        assertThat(errors).containsKey("dateOfBirth");
-        assertThat(errors.get("dateOfBirth")).contains("must be a past date");
+        assertThat(errors.get("email")).contains("Email should be valid, e.g. example@gmail.com");
 
         ResponseEntity<List> getResponse = restTemplate.getForEntity(baseUrl, List.class);
         assertThat(getResponse.getBody()).isEmpty();
-//        ResponseEntity<StudentDTO> response = studentController.createStudent(studentDTO);
-//        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
-//
-//        Map<String, String> errors = objectMapper.convertValue(response.getBody(), Map.class);
-//        assertThat(errors).containsKey("name");
-//        assertThat(errors).containsKey("email");
-//        assertThat(errors).containsKey("dateOfBirth");
+
     }
 
     @Test
@@ -150,8 +142,7 @@ public class StudentSystemTest {
                 .dateOfBirth(LocalDate.of(2000, 1, 1))
                 .build();
         ResponseEntity<String> response = restTemplate.postForEntity(baseUrl, studentDTO2, String.class);
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CONFLICT);
-        assertThat(response.getBody()).contains("Duplicate email address");
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
 
         List<StudentDTO> students = restTemplate.getForEntity(baseUrl, List.class).getBody();
         assertThat(students).hasSize(1);

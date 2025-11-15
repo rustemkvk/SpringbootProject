@@ -43,7 +43,7 @@ public class StudentControllerImpl implements StudentController{
     @Override
     @GetMapping
     public ResponseEntity<List<StudentDTO>> getAllStudents() {
-        return ResponseEntity.ok(studentService.getAllStudents());
+            return ResponseEntity.ok(studentService.getAllStudents());
     }
 
     @Override
