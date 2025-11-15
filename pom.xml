@@ -78,6 +78,15 @@
             <version>4.35.0</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- Cucumber Reporting JAR -->
+        <dependency>
+            <groupId>net.masterthought</groupId>
+            <artifactId>cucumber-reporting</artifactId>
+            <version>5.7.8</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -92,35 +101,41 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven.surefire.plugin}</version>
+                <version>3.2.5</version>
                 <configuration>
                     <includes>
                         <include>**/*Test.java</include>
                         <include>**/CucumberTestRunner.java</include>
                     </includes>
-                    <testFailureIgnore>false</testFailureIgnore>
                 </configuration>
             </plugin>
 
-            <!-- Cucumber Reporting -->
+            <!-- Cucumber Reporting (runs with JAR) -->
             <plugin>
-                <groupId>net.masterthought</groupId>
-                <artifactId>cucumber-reporting</artifactId>
-                <version>5.7.8</version>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.3.0</version>
                 <executions>
                     <execution>
-                        <id>generate-report</id>
+                        <id>generate-cucumber-report</id>
                         <phase>verify</phase>
                         <goals>
-                            <goal>generate</goal>
+                            <goal>java</goal>
                         </goals>
-                        <configuration>
-                            <projectName>Student API Tests</projectName>
-                            <outputDirectory>${project.build.directory}/cucumber-reports</outputDirectory>
-                            <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
-                        </configuration>
                     </execution>
                 </executions>
+                <configuration>
+                    <mainClass>net.masterthought.cucumber.ReportBuilder</mainClass>
+                    <classpathScope>test</classpathScope>
+                    <arguments>
+                        <argument>--input</argument>
+                        <argument>${project.build.directory}/cucumber.json</argument>
+                        <argument>--output</argument>
+                        <argument>${project.build.directory}/cucumber-reports</argument>
+                        <argument>--project</argument>
+                        <argument>Student API</argument>
+                    </arguments>
+                </configuration>
             </plugin>
         </plugins>
     </build>
