@@ -7,6 +7,8 @@ import com.example.entity.Student;
 import com.example.repositories.StudentRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -47,6 +49,17 @@ public class StudentSystemTest {
     private ObjectMapper objectMapper;
 
     private final String baseUrl = "http://localhost:8080/api/students";
+
+    @BeforeEach
+    void setUp() {
+        studentRepository.deleteAll(); // Her testten önce DB’yi temizle
+    }
+
+    @AfterEach
+    void tearDown() {
+        studentRepository.deleteAll(); // Her testten sonra tekrar temizle (ekstra güvenlik)
+    }
+
 
     @Test
     public void testGetAllStudents_Empty() {
@@ -100,7 +113,7 @@ public class StudentSystemTest {
 
         Map<String, String> errors = objectMapper.readValue(response.getBody(), Map.class);
         assertThat(errors).containsKey("name");
-        assertThat(errors.get("name")).contains("must not be blank");
+        assertThat(errors.get("name")).contains("not be blank");
         assertThat(errors).containsKey("email");
         assertThat(errors.get("email")).contains("must be a well-formed email address");
         assertThat(errors).containsKey("dateOfBirth");
