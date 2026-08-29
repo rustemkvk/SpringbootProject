@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
                 "json:target/cucumber-report.json",
                 "html:target/cucumber.html"},
         features = "src/test/resources/features",
-        glue = {"com.example.cucumber.config", "com.example.cucumber.stepdef"},
+        glue = "com.example.cucumber.config",
         publish = true
 )
 
